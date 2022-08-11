@@ -25,12 +25,7 @@ def parse_table(url):
         if row.text in snils_list:
             # print(i, row.text)
             pos.update({f"{i}":f"{row.text}"})
-    print(pos)
-    
-
-
-
-
+    return pos
 
 
 def main():
