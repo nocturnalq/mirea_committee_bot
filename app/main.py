@@ -1,4 +1,5 @@
 from cgitb import reset
+from json import load
 import telebot
 import dotenv
 import requests
@@ -11,9 +12,9 @@ def load_envs(path: str) -> str:
     dotenv.load_dotenv(dotenv_path=dotenv_path)
 
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-SNILS = os.getenv("SNILS")
 
 def parse_table(url):
+    SNILS = os.getenv("SNILS")
     snils_list = SNILS.split(',')
     html_text = requests.get(url)
     soup = BeautifulSoup(html_text.content, 'html5lib')
@@ -30,6 +31,7 @@ def parse_table(url):
 
 def main():
     #  bot = telebot.TeleBot(TELEGRAM_TOKEN)
+    load_envs('../.env')
     parse_table('https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1714961437918539062&prior=any&documentType=original&accepted=1&acceptedEntrant=any&onlyActive=1&onlyPaid=0')
 
 
