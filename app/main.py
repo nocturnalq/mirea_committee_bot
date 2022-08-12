@@ -24,7 +24,6 @@ def parse_table(url):
     for row in table.find_all(attrs={'class':'fio'})[1:]:
         i += 1
         if row.text in snils_list:
-            # print(i, row.text)
             pos.update({f"{i}":f"{row.text}"})
     return pos
 
